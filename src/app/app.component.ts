@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { LoginService } from './service/login-service.service';
 
 @Component({
   selector: 'app-root',
@@ -8,15 +7,8 @@ import { LoginService } from './service/login-service.service';
 })
 export class AppComponent {
 
-  constructor(
-    private loginService: LoginService
-  ) {}
+  constructor() { }
 
   title = 'curso-angular-rest';
 
-  usuario = {login: '', senha: ''};
-
-  public login() {
-    this.loginService.login(this.usuario);
-  }
 }
