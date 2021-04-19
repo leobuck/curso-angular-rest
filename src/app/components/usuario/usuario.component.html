@@ -1,9 +1,10 @@
 <table class="table">
     <thead>
         <tr>
-            <th>Id</th>
+            <th>#</th>
             <th>Login</th>
             <th>Nome</th>
+            <th>Ações</th>
         </tr>
     </thead>
     <tbody>
@@ -11,6 +12,9 @@
             <td>{{usuario.id}}</td>
             <td>{{usuario.login}}</td>
             <td>{{usuario.nome}}</td>
+            <td>
+                <button class="btn btn-danger" (click)="deletar(usuario.id)">Deletar</button>
+            </td>
         </tr>
     </tbody>
 </table>
