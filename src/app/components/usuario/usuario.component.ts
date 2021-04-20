@@ -11,6 +11,7 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 export class UsuarioComponent implements OnInit {
 
   usuarios: Observable<Usuario[]>;
+  nome: string;
 
   constructor(
     private usuarioService: UsuarioService
@@ -32,4 +33,9 @@ export class UsuarioComponent implements OnInit {
     });
   }
 
+  consultar() {
+    this.usuarioService.consultarUsuario(this.nome).subscribe(data => {
+      this.usuarios = data;
+    });
+  }
 }
