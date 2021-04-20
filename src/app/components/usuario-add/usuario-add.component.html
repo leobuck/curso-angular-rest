@@ -1,1 +1,28 @@
-<p>Usuario</p>
+<h3>Usuário</h3>
+<form>
+    <div class="form-row">
+        <div class="form-group col-md-1">
+            <label for="id">ID</label>
+            <input type="number" id="id" name="id" class="form-control" readonly="true" autocomplete="false">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" class="form-control" required="true" autocomplete="false">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="login">Login</label>
+            <input type="text" id="login" name="login" class="form-control" required="true" autocomplete="false">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="senha">Senha</label>
+            <input type="text" id="senha" name="senha" class="form-control" required="true" autocomplete="false">
+        </div>
+    </div>
+
+    <button class="btn btn-default mr-2" [routerLink]="['/usuarios']" routerLinkActive="router-link-active">Voltar</button>
+    <button class="btn btn-success" [routerLink]="['/usuarios']" routerLinkActive="router-link-active">Salvar</button>
+</form>
