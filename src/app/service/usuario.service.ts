@@ -23,4 +23,8 @@ export class UsuarioService {
   consultarUsuario(nome: string): Observable<any> {
     return this.http.get<any>(AppConstants.baseUrl + "usuariosPorNome/" + nome);
   }
+
+  getUsuario(id: number): Observable<any> {
+    return this.http.get<any>(AppConstants.baseUrl + id);
+  }
 }
