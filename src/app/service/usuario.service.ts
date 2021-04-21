@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AppConstants } from '../app-constants';
+import { Usuario } from '../model/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +27,13 @@ export class UsuarioService {
 
   getUsuario(id: number): Observable<any> {
     return this.http.get<any>(AppConstants.baseUrl + id);
+  }
+
+  saveUsuario(usuario: Usuario):Observable<any> {
+    return this.http.post<any>(AppConstants.baseUrl, usuario);
+  }
+
+  updateUsuario(usuario: Usuario):Observable<any> {
+    return this.http.put<any>(AppConstants.baseUrl, usuario);
   }
 }
