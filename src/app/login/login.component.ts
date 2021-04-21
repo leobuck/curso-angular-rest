@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginService } from '../service/login-service.service';
 
 @Component({
@@ -9,7 +10,8 @@ import { LoginService } from '../service/login-service.service';
 export class LoginComponent implements OnInit {
 
   constructor(
-    private loginService: LoginService
+    private loginService: LoginService,
+    private router: Router
   ) { }
 
   usuario = { login: '', senha: '' };
@@ -19,6 +21,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (localStorage.getItem('token') != null && localStorage.getItem('token').toString().trim() != null) {
+      this.router.navigate(['home']);
+    }
   }
 
 }
