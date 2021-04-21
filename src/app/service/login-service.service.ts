@@ -25,4 +25,12 @@ export class LoginService {
       console.error("Erro ao fazer login!");
     });
   }
+
+  isLogged() {
+    if (localStorage.getItem('token') != null && localStorage.getItem('token').toString().trim() != null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

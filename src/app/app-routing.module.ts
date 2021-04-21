@@ -4,14 +4,15 @@ import { UsuarioAddComponent } from './components/usuario-add/usuario-add.compon
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { LoginGuard } from './service/login.guard';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent, canActivate: [LoginGuard] },
   { path: 'login', component: LoginComponent },
   { path: '', component: LoginComponent },
-  { path: 'usuarios', component: UsuarioComponent },
-  { path: 'usuario-add', component: UsuarioAddComponent },
-  { path: 'usuario-add/:id', component: UsuarioAddComponent }
+  { path: 'usuarios', component: UsuarioComponent, canActivate: [LoginGuard] },
+  { path: 'usuario-add', component: UsuarioAddComponent, canActivate: [LoginGuard] },
+  { path: 'usuario-add/:id', component: UsuarioAddComponent, canActivate: [LoginGuard] }
 ];
 
 @NgModule({
