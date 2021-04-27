@@ -25,6 +25,13 @@
             <input type="password" id="senha" name="senha" [(ngModel)]="usuario.senha" #senhaValidate="ngModel" class="form-control" required="true" autocomplete="false">
         </div>
     </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="cep">CEP</label>
+            <span style="color: red; font-weight: bold;" *ngIf="cepValidate.invalid">*</span>
+            <input type="text" id="cep" name="cep" [(ngModel)]="usuario.cep" #cepValidate="ngModel" class="form-control" required="true" autocomplete="false">
+        </div>
+    </div>
 
     <button class="btn btn-default mr-2" [routerLink]="['/usuarios']" routerLinkActive="router-link-active">Voltar</button>
     <button class="btn btn-primary mr-2" (click)="novo()">Novo</button>

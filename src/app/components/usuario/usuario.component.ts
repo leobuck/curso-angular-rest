@@ -22,9 +22,11 @@ export class UsuarioComponent implements OnInit {
   }
 
   deletar(id: number) {
-    this.usuarioService.deleteUsuario(id).subscribe(data => {
-      this.listar();
-    });
+    if (confirm("Deseja excluir o usuário?")) {
+      this.usuarioService.deleteUsuario(id).subscribe(data => {
+        this.listar();
+      });
+    }
   }
 
   listar() {
