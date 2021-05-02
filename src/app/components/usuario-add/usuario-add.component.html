@@ -62,7 +62,7 @@
             <tr *ngFor="let telefone of usuario.telefones">
                 <td>{{telefone.id}}</td>
                 <td>{{telefone.numero}}</td>
-                <td><button class="btn btn-danger">Deletar</button></td>
+                <td><button class="btn btn-danger" (click)="deletarTelefone(telefone)">Deletar</button></td>
             </tr>
         </tbody>
     </table>

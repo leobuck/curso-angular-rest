@@ -36,4 +36,8 @@ export class UsuarioService {
   updateUsuario(usuario: Usuario):Observable<any> {
     return this.http.put<any>(AppConstants.baseUrl, usuario);
   }
+
+  deletarTelefone(idFone: number): Observable<any> {
+    return this.http.delete(AppConstants.baseUrl + "deletarTelefone/" + idFone, {responseType: 'text' as 'json'});
+  }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Telefone } from 'src/app/model/telefone';
 import { Usuario } from 'src/app/model/usuario';
 import { UsuarioService } from 'src/app/service/usuario.service';
 
@@ -33,6 +34,15 @@ export class UsuarioAddComponent implements OnInit {
     } else {
       this.usuarioService.saveUsuario(this.usuario).subscribe(data => {
         this.novo();
+      });
+    }
+  }
+
+  deletarTelefone(fone: Telefone) {
+    if (fone.id !== null && confirm("Deseja excluir o telefone?")) {
+      this.usuarioService.deletarTelefone(fone.id).subscribe(data => {
+        const index = this.usuario.telefones.indexOf(fone);
+        this.usuario.telefones.splice(index, 1);
       });
     }
   }
