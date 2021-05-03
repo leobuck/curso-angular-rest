@@ -40,4 +40,8 @@ export class UsuarioService {
   deletarTelefone(idFone: number): Observable<any> {
     return this.http.delete(AppConstants.baseUrl + "deletarTelefone/" + idFone, {responseType: 'text' as 'json'});
   }
+
+  getUsuariosPorPagina(pagina: number): Observable<any> {
+    return this.http.get<any>(AppConstants.baseUrl + "page/" + pagina);
+  }
 }

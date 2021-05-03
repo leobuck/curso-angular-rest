@@ -45,6 +45,9 @@ export class UsuarioComponent implements OnInit {
   }
 
   carregarPagina(pagina) {
-    console.log(pagina);
+    this.usuarioService.getUsuariosPorPagina(pagina-1).subscribe(data => {
+      this.usuarios = data.content;
+      this.total = data.totalElements;
+    });
   }
 }
