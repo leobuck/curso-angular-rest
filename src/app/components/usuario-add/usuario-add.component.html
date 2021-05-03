@@ -41,7 +41,7 @@
             <div class="form-row">
                 <div class="form-group col-md-10">
                     <label for="numero">Número</label>
-                    <input type="text" id="numero" name="numero" [(ngModel)]="telefone.numero" class="form-control">
+                    <input type="text" id="numero" name="numero" [(ngModel)]="telefone.numero" class="form-control" mask="(00) 0000-0000">
                 </div>
                 <div class="form-group col-md-2">
                     <button class="btn btn-primary" (click)="adicionarTelefone()">Adicionar</button>
@@ -62,7 +62,7 @@
         <tbody>
             <tr *ngFor="let telefone of usuario.telefones">
                 <td>{{telefone.id}}</td>
-                <td>{{telefone.numero}}</td>
+                <td>{{telefone.numero | mask: '(00) 0000-0000'}}</td>
                 <td><button class="btn btn-danger" (click)="deletarTelefone(telefone)">Deletar</button></td>
             </tr>
         </tbody>
