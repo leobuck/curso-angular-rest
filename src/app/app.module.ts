@@ -11,6 +11,7 @@ import { HttpInterceptorModule } from './service/header-interceptor.service';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { UsuarioAddComponent } from './components/usuario-add/usuario-add.component';
 import { IConfig, NgxMaskModule } from 'ngx-mask';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 export const optionsMask: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -28,7 +29,8 @@ export const optionsMask: Partial<IConfig> | (() => Partial<IConfig>) = {};
     FormsModule,
     HttpClientModule,
     HttpInterceptorModule,
-    NgxMaskModule.forRoot(optionsMask)
+    NgxMaskModule.forRoot(optionsMask),
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,6 +12,7 @@ export class UsuarioComponent implements OnInit {
 
   usuarios: Observable<Usuario[]>;
   nome: string;
+  p: number = 1;
 
   constructor(
     private usuarioService: UsuarioService
