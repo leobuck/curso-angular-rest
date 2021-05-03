@@ -10,7 +10,7 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 })
 export class UsuarioComponent implements OnInit {
 
-  usuarios: Observable<Usuario[]>;
+  usuarios: Array<Usuario>;
   nome: string;
   p: number = 1;
   total: number;
@@ -23,10 +23,11 @@ export class UsuarioComponent implements OnInit {
     this.listar();
   }
 
-  deletar(id: number) {
+  deletar(usuario: Usuario) {
     if (confirm("Deseja excluir o usuário?")) {
-      this.usuarioService.deleteUsuario(id).subscribe(data => {
-        this.listar();
+      this.usuarioService.deleteUsuario(usuario.id).subscribe(data => {
+        const index = this.usuarios.indexOf(usuario);
+        this.usuarios.splice(index, 1);
       });
     }
   }
