@@ -11,6 +11,7 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 })
 export class UsuarioAddComponent implements OnInit {
   usuario = new Usuario();
+  telefone = new Telefone();
 
   constructor(
     private router: ActivatedRoute,
@@ -39,6 +40,12 @@ export class UsuarioAddComponent implements OnInit {
   }
 
   deletarTelefone(fone: Telefone) {
+    if (fone.id === undefined) {
+      const index = this.usuario.telefones.indexOf(fone);
+      this.usuario.telefones.splice(index, 1);
+      return;
+    }
+    
     if (fone.id !== null && confirm("Deseja excluir o telefone?")) {
       this.usuarioService.deletarTelefone(fone.id).subscribe(data => {
         const index = this.usuario.telefones.indexOf(fone);
@@ -47,8 +54,18 @@ export class UsuarioAddComponent implements OnInit {
     }
   }
 
+  adicionarTelefone() {
+    if (this.usuario.telefones === undefined) {
+      this.usuario.telefones = new Array<Telefone>();
+    }
+
+    this.usuario.telefones.push(this.telefone);
+    this.telefone = new Telefone();
+  }
+
   novo() {
     this.usuario = new Usuario();
+    this.telefone = new Telefone();
   }
 
 }
