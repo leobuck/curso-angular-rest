@@ -31,6 +31,17 @@
             <span style="color: red; font-weight: bold;" *ngIf="cepValidate.invalid">*</span>
             <input type="text" id="cep" name="cep" [(ngModel)]="usuario.cep" #cepValidate="ngModel" class="form-control" required="true" autocomplete="false">
         </div>
+        <div class="form-group col-md-6">
+            <label for="dataNascimento">Data Nascimento</label>
+            <span style="color: red; font-weight: bold;" *ngIf="nascValidate.invalid">*</span>
+            <div class="input-group">
+                <input type="text" id="dataNascimento" name="dataNascimento" [(ngModel)]="usuario.dataNascimento" #nascValidate="ngModel" class="form-control" required="true" autocomplete="false"
+                    ngbDatepicker #dataNascimento="ngbDatepicker">
+                <div class="input-group-append">
+                    <button class="btn btn-default" (click)="dataNascimento.toggle()" type="button"></button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="card text-center">
