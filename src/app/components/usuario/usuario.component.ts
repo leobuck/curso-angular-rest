@@ -41,7 +41,8 @@ export class UsuarioComponent implements OnInit {
 
   consultar() {
     this.usuarioService.consultarUsuario(this.nome).subscribe(data => {
-      this.usuarios = data;
+      this.usuarios = data.content;
+      this.total = data.totalElements;
     });
   }
 
