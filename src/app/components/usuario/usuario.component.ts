@@ -40,6 +40,11 @@ export class UsuarioComponent implements OnInit {
   }
 
   consultar() {
+    if (this.nome === '' || this.nome === undefined) {
+      this.listar();
+      return;
+    }
+
     this.usuarioService.consultarUsuario(this.nome).subscribe(data => {
       this.usuarios = data.content;
       this.total = data.totalElements;
@@ -47,6 +52,14 @@ export class UsuarioComponent implements OnInit {
   }
 
   carregarPagina(pagina) {
+    if (this.nome !== '' || this.nome !== undefined) {
+      this.usuarioService.consultarUsuarioPorPagina(this.nome, pagina-1).subscribe(data => {
+        this.usuarios = data.content;
+        this.total = data.totalElements;
+      });
+      return;
+    }
+
     this.usuarioService.getUsuariosPorPagina(pagina-1).subscribe(data => {
       this.usuarios = data.content;
       this.total = data.totalElements;

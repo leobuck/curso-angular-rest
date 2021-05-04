@@ -44,4 +44,8 @@ export class UsuarioService {
   getUsuariosPorPagina(pagina: number): Observable<any> {
     return this.http.get<any>(AppConstants.baseUrl + "page/" + pagina);
   }
+
+  consultarUsuarioPorPagina(nome: string, pagina: number): Observable<any> {
+    return this.http.get<any>(AppConstants.baseUrl + "usuariosPorNome/" + nome + "/page/" + pagina);
+  }
 }
