@@ -12,6 +12,7 @@ import { UsuarioComponent } from './components/usuario/usuario.component';
 import { UsuarioAddComponent } from './components/usuario-add/usuario-add.component';
 import { IConfig, NgxMaskModule } from 'ngx-mask';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 export const optionsMask: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -30,7 +31,8 @@ export const optionsMask: Partial<IConfig> | (() => Partial<IConfig>) = {};
     HttpClientModule,
     HttpInterceptorModule,
     NgxMaskModule.forRoot(optionsMask),
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

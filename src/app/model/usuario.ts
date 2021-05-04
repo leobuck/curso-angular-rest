@@ -6,5 +6,6 @@ export class Usuario {
     nome: string;
     senha: string;
     cep: string;
+    dataNascimento: string;
     telefones: Array<Telefone>
 }
