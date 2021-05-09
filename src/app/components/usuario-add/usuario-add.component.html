@@ -50,6 +50,14 @@
             </select>
         </div>
     </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="salario">Salário</label>
+            <span style="color: red; font-weight: bold;" *ngIf="salarionValidate.invalid">*</span>
+            <input type="text" id="salario" name="salario" [(ngModel)]="usuario.salario" #salarionValidate="ngModel" class="form-control" autocomplete="false"
+                currencyMask [options]="{ prefix: 'R$', thousands: '.', decimal: ',' }">
+        </div>
+    </div>
 
     <div class="card text-center">
         <div class="card-header">
