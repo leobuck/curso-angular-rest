@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppConstants } from '../app-constants';
+import { Usuario } from '../model/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +33,18 @@ export class LoginService {
     } else {
       return false;
     }
+  }
+
+  recuperar(login: string) {
+    let usuario = new Usuario();
+    usuario.login = login;
+    usuario.senha = "";
+
+    return this.http.post(AppConstants.getBaseUrlPath + "recuperar/", usuario).subscribe(data => {
+      alert(JSON.parse(JSON.stringify(data)).error);
+    },   
+    error => {
+      alert("Erro ao recuperar login!");
+    });
   }
 }
