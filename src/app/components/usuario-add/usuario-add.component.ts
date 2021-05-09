@@ -1,6 +1,7 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgbDateAdapter, NgbDateParserFormatter, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { Profissao } from 'src/app/model/profissao';
 import { Telefone } from 'src/app/model/telefone';
 import { Usuario } from 'src/app/model/usuario';
 import { UsuarioService } from 'src/app/service/usuario.service';
@@ -72,6 +73,7 @@ export class FormataData extends NgbDateParserFormatter {
 export class UsuarioAddComponent implements OnInit {
   usuario = new Usuario();
   telefone = new Telefone();
+  profissoes = new Array<Profissao>();
 
   constructor(
     private router: ActivatedRoute,
@@ -79,6 +81,9 @@ export class UsuarioAddComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.usuarioService.getProfissoes().subscribe(data => {
+      this.profissoes = data;
+    });
     let id = this.router.snapshot.paramMap.get('id');
     if (id != null) {
       this.usuarioService.getUsuario(Number(id)).subscribe(data => {

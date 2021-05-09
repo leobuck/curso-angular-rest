@@ -10,4 +10,8 @@ export class AppConstants {
     public static get baseUrl(): string {
         return this.baseServidor + "curso-api-rest/usuario/";
     }
+
+    public static get getBaseUrlPath(): string {
+        return this.baseServidor + "curso-api-rest/";
+    }
 }
