@@ -65,4 +65,10 @@ export class UsuarioComponent implements OnInit {
       this.total = data.totalElements;
     });
   }
+
+  imprimirRelatorio() {
+    return this.usuarioService.downloadRelatorio().subscribe(data => {
+      document.querySelector('iframe').src = data;
+    })
+  }
 }

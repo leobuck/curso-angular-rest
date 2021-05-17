@@ -52,4 +52,8 @@ export class UsuarioService {
   getProfissoes(): Observable<any> {
     return this.http.get<any>(AppConstants.getBaseUrlPath + "profissao/");
   }
+
+  downloadRelatorio(): Observable<any> {
+    return this.http.get<any>(AppConstants.baseUrl + "relatorio", {responseType: 'text' as 'json'});
+  }
 }
