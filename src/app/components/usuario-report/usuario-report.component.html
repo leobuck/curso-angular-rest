@@ -1,0 +1,55 @@
+<h3>Relatório de Usuário</h3>
+<form #formValidate="ngForm">
+    
+    <div class="form-row">
+    
+        <div class="form-group col-md-3">
+            <label for="dataInicio">Data Nasc. Inicio</label>
+            <span style="color: red; font-weight: bold;" *ngIf="dataInicioValidate.invalid">*</span>
+            <div class="input-group">
+                <input type="text" id="dataInicio" name="dataInicio" [(ngModel)]="usuarioRelatorio.dataInicio" #dataInicioValidate="ngModel" class="form-control" required="true" autocomplete="false"
+                    ngbDatepicker #dataInicio="ngbDatepicker">
+                <div class="input-group-append">
+                    <button class="btn btn-default" (click)="dataInicio.toggle()" type="button"></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group col-md-3">
+            <label for="dataFim">Data Nasc. Fim</label>
+            <span style="color: red; font-weight: bold;" *ngIf="dataFimValidate.invalid">*</span>
+            <div class="input-group">
+                <input type="text" id="dataFim" name="dataFim" [(ngModel)]="usuarioRelatorio.dataFim" #dataFimValidate="ngModel" class="form-control" required="true" autocomplete="false"
+                    ngbDatepicker #dataFim="ngbDatepicker">
+                <div class="input-group-append">
+                    <button class="btn btn-default" (click)="dataFim.toggle()" type="button"></button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    <button class="btn btn-primary mr-2" data-toggle="modal" data-target="#myModal" (click)="imprimirRelatorio()" [disabled]="formValidate.invalid">
+        Imprimir Relatório
+    </button>
+    
+</form>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="min-width: 90%; min-height: 90%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Download</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <iframe id="pdf" width="100%" height="500" frameborder="0" allowtransparency="true"></iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
