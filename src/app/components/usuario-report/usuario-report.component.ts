@@ -72,12 +72,13 @@ export class UsuarioReportComponent {
   usuarioRelatorio = new UsuarioRelatorio();
 
   constructor(
-    private router: ActivatedRoute,
     private usuarioService: UsuarioService
   ) { }
 
   imprimirRelatorio() {
-    console.log(this.usuarioRelatorio);
+    return this.usuarioService.downloadRelatorioParam(this.usuarioRelatorio).subscribe(data => {
+      document.querySelector('iframe').src = data;
+    });
   }
-  
+
 }

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AppConstants } from '../app-constants';
 import { Usuario } from '../model/usuario';
+import { UsuarioRelatorio } from '../model/usuarioRelatorio';
 
 @Injectable({
   providedIn: 'root'
@@ -55,5 +56,9 @@ export class UsuarioService {
 
   downloadRelatorio(): Observable<any> {
     return this.http.get<any>(AppConstants.baseUrl + "relatorio", {responseType: 'text' as 'json'});
+  }
+
+  downloadRelatorioParam(relat: UsuarioRelatorio): Observable<any> {
+    return this.http.post<any>(AppConstants.baseUrl + "relatorio", relat, {responseType: 'text' as 'json'});
   }
 }
