@@ -22,9 +22,15 @@ export class FormatDateAdapter extends NgbDateAdapter<string> {
   }
 
   toModel(date: NgbDateStruct | null): string | null {
-    return date ? date.day + this.DELIMITER + date.month + this.DELIMITER + date.year : null;
+    return date ? this.validarData(date.day) + this.DELIMITER + this.validarData(date.month) + this.DELIMITER + date.year : null;
   }
   
+  validarData(valor: number) {
+    if (valor.toString() !== '' && valor <= 9) {
+      return '0' + valor;
+    }
+    return valor;
+  }
 }
 
 @Injectable()
@@ -49,7 +55,7 @@ export class FormataData extends NgbDateParserFormatter {
   }
 
   toModel(date: NgbDateStruct): string | null {
-    return date ? date.day + this.DELIMITER + date.month + this.DELIMITER + date.year : null;
+    return date ? this.validarData(date.day) + this.DELIMITER + this.validarData(date.month) + this.DELIMITER + date.year : null;
   }
 
   validarData(valor: number) {
