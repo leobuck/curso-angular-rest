@@ -61,4 +61,8 @@ export class UsuarioService {
   downloadRelatorioParam(relat: UsuarioRelatorio): Observable<any> {
     return this.http.post<any>(AppConstants.baseUrl + "relatorio", relat, {responseType: 'text' as 'json'});
   }
+
+  carregarGrafico(): Observable<any> {
+    return this.http.get<any>(AppConstants.baseUrl + "grafico");
+  }
 }
